@@ -1,5 +1,6 @@
 package lesson3;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class lesson3 {
         загаданное, или меньше. После победы или проигрыша выводится запрос –
          «Повторить игру еще раз? 1 – да / 0 – нет»(1 – повторить, 0 – нет).
          */
-        whatNumber();
+        //whatNumber();
 
         /*
         2 * Создать массив из слов String[] words = {"apple", "orange", "lemon",
@@ -21,7 +22,46 @@ public class lesson3 {
         "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", "pea",
         "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
          */
+        String[] fruits = {"apple", "orange", "lemon",
+                "banana", "apricot", "avocado", "broccoli", "carrot", "cherry", "garlic",
+                "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", "pea",
+                "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
+        System.out.println("Угадайте какой фрукт или овощь загадал конпьютер. Используйте только строчные буквы.");
 
+        whatWord(fruits);
+    }
+
+    private static void whatWord(String[] fruits) {
+        Random random = new Random();
+        int index = random.nextInt(fruits.length);
+        String rndFruit = fruits[index];
+        String fruit="";
+        System.out.println(rndFruit);
+        while (!fruit.equals(rndFruit)){
+            System.out.println("Введите название фрукта:");
+            fruit = sc.nextLine();
+            if (fruit.equals(rndFruit)) {
+                System.out.println("Вы угадали!");
+            } else {
+                System.out.println("Вы ошиблись :( Попробуйте еще раз.");
+                System.out.println("Подсказка :" + checkChar(fruit, rndFruit));
+            }
+        }
+
+
+    }
+
+    private static String checkChar(String fruit, String rndFruit) {
+        String hint = "";
+        for (int i = 0; i < 15; i++) {
+            if(fruit.length() > i) {
+                hint += (fruit.charAt(i) == rndFruit.charAt(i)) ? fruit.charAt(i) : "#";
+            } else {
+                hint+="#";
+            }
+
+    }
+        return hint;
     }
 
     private static void whatNumber() {
