@@ -36,7 +36,7 @@ public class lesson3 {
         int index = random.nextInt(fruits.length);
         String rndFruit = fruits[index];
         String fruit="";
-        System.out.println(rndFruit);
+//        System.out.println(rndFruit);
         while (!fruit.equals(rndFruit)){
             System.out.println("Введите название фрукта:");
             fruit = sc.nextLine();
